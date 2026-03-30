@@ -1,7 +1,9 @@
+import { NavBar } from "./Components/NavBar/Navbar"
+
 const App = () =>{
   return(
-    <div>
-      <h1 className="bg-red-500">export app</h1>
+    <div className="w-full h-screen bg-[#c3ffde]">
+      < NavBar />
     </div>
   )
 }
