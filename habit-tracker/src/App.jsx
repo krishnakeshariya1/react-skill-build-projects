@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { NavBar } from "./Components/NavBar/Navbar"
 import { InfoList } from "./Components/HabitList/InfoList";
 import { TodayHabit } from "./Components/LeftSide/TodayHabit";
@@ -10,20 +10,22 @@ function getDate(){
 
 const App = () =>{
 
+  const [habits, setHabits] = useState()
+
   return(
 
-    <div className="w-full h-auto bg-[#c3ffde] ">
+    <div className="w-full min-h-screen bg-[#e9f6fa] ">
 
       < NavBar />
 
       <div className="px-16 py-4">
-        <h1 className="text-4xl font-bold text-[#003824] mb-1">Good Morning, Krishna!</h1>
-        <p className="ml-1 font-medium text-[#4b8171]">{ getDate()}</p>
+        <h1 className="text-4xl font-bold text-[#1A365D] mb-1">Good Morning, Krishna!</h1>
+        <p className="ml-2 font-medium text-[#4A5568]">{ getDate()}</p>
       </div>
 
       < InfoList />
 
-      <div className="container px-16 py-6">
+      <div className="container px-16 py-6 w-full">
         < TodayHabit />
       </div>
 
