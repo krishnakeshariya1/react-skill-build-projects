@@ -11,3 +11,14 @@ html{
     padding: 0;
     box-sizing: border-box;
 }
+.container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+}
+
+.leftSide input[type="checkbox"]{
+    width: 32px;
+    height: 32px;
+    accent-color: rgb(1, 169, 1);
+}

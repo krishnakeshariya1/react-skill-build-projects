@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { NavBar } from "./Components/NavBar/Navbar"
-import { HabitList, InfoList } from "./Components/HabitList/InfoList";
+import { InfoList } from "./Components/HabitList/InfoList";
+import { TodayHabit } from "./Components/LeftSide/TodayHabit";
 
 function getDate(){
   const today = new Date();
@@ -21,6 +22,10 @@ const App = () =>{
       </div>
 
       < InfoList />
+
+      <div className="container px-16 py-6">
+        < TodayHabit />
+      </div>
 
     </div>
   )
