@@ -19,12 +19,6 @@ const App = () =>{
     localStorage.setItem("habits",JSON.stringify(habits));
   },[habits])
 
-  function valideInput(inp , catg){
-    
-    if(inp.trim() === "" ) return;
-
-    createHabit(inp , catg)
-  }
   function createHabit(inp, catg){
 
     const habit = {
@@ -36,6 +30,10 @@ const App = () =>{
 
     setHabits((prev)=> [...prev, habit])
 
+  }
+
+  function deleteHabit(id){
+    setHabits((prev) => prev.filter((habit)=> habit.id !== id));
   }
 
   return(
@@ -52,7 +50,7 @@ const App = () =>{
       < InfoList />
 
       <div className="container px-16 py-6 w-full">
-        < TodayHabit habits={habits} createHabit={createHabit} />
+        < TodayHabit habits={habits} createHabit={createHabit} deleteHabit={deleteHabit}/>
       </div>
 
     </div>

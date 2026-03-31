@@ -38,6 +38,7 @@ export const AddHabit = ({createHabit}) =>{
                 <option value="Work-out">Work-out</option>
                 <option value="writing">writing</option>
                 <option value="singing">Singing</option>
+                <option value="coding">Coding</option>
             </select>
            </div>
 

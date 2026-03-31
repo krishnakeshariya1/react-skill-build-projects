@@ -1,4 +1,4 @@
-export const HabitCard = ({habits}) => {
+export const HabitCard = ({habits, deleteHabit}) => {
     return (
         <div className="flex flex-col px-7 gap-3">
             {habits.map((habit, id)=>{
@@ -8,8 +8,12 @@ export const HabitCard = ({habits}) => {
                     <h3 className="font-semibold text-xl text-[#1A365D]">{habit.name}</h3>
                     <span className="font-lite ml-3 text-[#4A5568]">{habit.category}</span>
                 </div>
-                <div className="leftSide w-12">
-                    <input type="checkbox"/>
+                <div className="flex gap-8 items-center justify-between">
+                    <button className="bg-red-600 px-2 py-1 rounded-lg font-bold text-white"
+                    onClick={()=>{
+                        deleteHabit(habit.id);
+                    }}>Delete</button>
+                   <label className="leftSide"><input type="checkbox"/></label> 
                 </div>
             </div>
                 )
