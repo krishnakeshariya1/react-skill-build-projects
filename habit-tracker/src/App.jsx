@@ -12,7 +12,7 @@ const App = () =>{
 
   return(
 
-    <div className="w-full h-screen bg-[#c3ffde]">
+    <div className="w-full h-auto bg-[#c3ffde] ">
 
       < NavBar />
 

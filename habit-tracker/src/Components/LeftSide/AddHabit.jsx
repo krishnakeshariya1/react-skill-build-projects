@@ -1,0 +1,25 @@
+export const AddHabit = () =>{
+    return(
+        <div className="w-full border-dotted border-2 border-black px-4 py-2 ">
+
+           <div className="flex gap-5">
+            <div className="w-1/2 flex flex-col">
+            <label className="ml-5">HABIT NAME :</label>
+            <input type="text" className="w-full bg-white px-4 py-2 rounded-2xl text-black outline-green-500" placeholder="Enter Habit"/>
+           </div>
+
+           <div className="w-1/2 flex flex-col">
+            <label className="ml-5">HABIT Category :</label>
+            <select className="bg-white w-full px-5 py-2 rounded-2xl text-black font-bold " >
+                <option value="Work-out">Work-out</option>
+                <option value="writing">writing</option>
+                <option value="singing">Singing</option>
+            </select>
+           </div>
+
+           </div>
+
+           <button className="w-full bg-green-600 mt-5 py-2 rounded-2xl font-bold text-white">Add Habit</button>
+        </div>
+    )
+}
