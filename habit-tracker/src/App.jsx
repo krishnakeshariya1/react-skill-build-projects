@@ -10,7 +10,33 @@ function getDate(){
 
 const App = () =>{
 
-  const [habits, setHabits] = useState()
+  const [habits, setHabits] = useState(()=>{
+    const stored = localStorage.getItem("habits");
+    return stored ? JSON.parse(stored) : []
+  })
+
+  useEffect(()=>{
+    localStorage.setItem("habits",JSON.stringify(habits));
+  },[habits])
+
+  function valideInput(inp , catg){
+    
+    if(inp.trim() === "" ) return;
+
+    createHabit(inp , catg)
+  }
+  function createHabit(inp, catg){
+
+    const habit = {
+      id : Date.now(),
+      name : inp,
+      category : catg,
+      completed : false
+    }
+
+    setHabits((prev)=> [...prev, habit])
+
+  }
 
   return(
 
@@ -26,7 +52,7 @@ const App = () =>{
       < InfoList />
 
       <div className="container px-16 py-6 w-full">
-        < TodayHabit />
+        < TodayHabit habits={habits} createHabit={createHabit} />
       </div>
 
     </div>
