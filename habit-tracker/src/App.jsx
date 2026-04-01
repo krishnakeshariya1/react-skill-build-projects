@@ -32,6 +32,18 @@ const App = () =>{
 
   }
 
+ const toggleHabit = (id) => {
+  console.log(id)
+  setHabits((prev) =>
+    prev.map((habit) =>
+      habit.id === id
+        ? { ...habit, completed: !habit.completed }
+        : habit
+    )
+  );
+  console.log(habits)
+};
+
   function deleteHabit(id){
     setHabits((prev) => prev.filter((habit)=> habit.id !== id));
   }
@@ -50,7 +62,7 @@ const App = () =>{
       < InfoList />
 
       <div className="container px-16 py-6 w-full">
-        < TodayHabit habits={habits} createHabit={createHabit} deleteHabit={deleteHabit}/>
+        < TodayHabit habits={habits} createHabit={createHabit} deleteHabit={deleteHabit} toggleHabit={toggleHabit}/>
       </div>
 
     </div>
