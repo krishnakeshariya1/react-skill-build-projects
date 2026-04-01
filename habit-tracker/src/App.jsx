@@ -34,7 +34,42 @@ const App = () => {
 
   }
 
+    const toggleHabit = (id) => {
 
+    const today = Date.now().toString();
+    let yesterDate = new Date();
+
+    yesterDate.setDate(yesterDate.getDate() -1);
+    const yesterDay = yesterDate.toDateString();
+
+    setHabits((prev) =>
+      prev.map((habit) =>{
+        if(habit.id !== id) return;
+
+        if(habit.lastCompletedDate === today){
+          return{
+            ...habit,
+            completed : false
+          }
+        }
+        if(habit.lastCompletedDate === yesterDay){
+          return{
+            ...habit,
+            completed : true,
+            streak : habit.streak +1,
+            lastCompletedDate : today,
+          }
+        }
+        return{
+          ...habit,
+          completed : true,
+          streak : 1,
+          lastCompletedDate : today
+        };
+      }
+      )
+    );
+  };
 
   function deleteHabit(id) {
     setHabits((prev) => prev.filter((habit) => habit.id !== id));
