@@ -24,7 +24,7 @@ const App = () => {
     const habit = {
       id: Date.now().toString(),
       name: inp,
-      category : catg,
+      category: catg,
       completed: false,
       streak: 0,
       lastCompletedDate: null
@@ -34,42 +34,49 @@ const App = () => {
 
   }
 
-    const toggleHabit = (id) => {
+ function manageStreak(id) {
+  const today = new Date().toDateString();
 
-    const today = Date.now().toString();
-    let yesterDate = new Date();
+  const yesterdayDate = new Date();
+  yesterdayDate.setDate(yesterdayDate.getDate() - 1);
+  const yesterday = yesterdayDate.toDateString();
 
-    yesterDate.setDate(yesterDate.getDate() -1);
-    const yesterDay = yesterDate.toDateString();
+  setHabits((prev) =>
+    prev.map((habit) => {
+      if (habit.id !== id) return habit;
 
-    setHabits((prev) =>
-      prev.map((habit) =>{
-        if(habit.id !== id) return;
-
-        if(habit.lastCompletedDate === today){
-          return{
-            ...habit,
-            completed : false
-          }
-        }
-        if(habit.lastCompletedDate === yesterDay){
-          return{
-            ...habit,
-            completed : true,
-            streak : habit.streak +1,
-            lastCompletedDate : today,
-          }
-        }
-        return{
+      if (habit.lastCompletedDate === today ) {
+        return {
           ...habit,
-          completed : true,
-          streak : 1,
-          lastCompletedDate : today
+          completed: false,
+          streak: Math.max(0, habit.streak - 1),        
+          lastCompletedDate: yesterday               
         };
       }
-      )
-    );
-  };
+
+      if (habit.lastCompletedDate === yesterday) {
+        return {
+          ...habit,
+          completed: true,
+          streak: habit.streak + 1,
+          lastCompletedDate: today
+        };
+      }
+
+      return {
+        
+        ...habit,
+        completed: true,
+        streak: 1,
+        lastCompletedDate: today
+      };
+    })
+  );
+}
+
+   useEffect(() => {
+    console.log(habits)
+  }, [habits, setHabits])
 
   function deleteHabit(id) {
     setHabits((prev) => prev.filter((habit) => habit.id !== id));
@@ -89,7 +96,7 @@ const App = () => {
       < InfoList />
 
       <div className="container px-16 py-6 w-full">
-        < TodayHabit habits={habits} createHabit={createHabit} deleteHabit={deleteHabit} toggleHabit={toggleHabit} />
+        < TodayHabit habits={habits} createHabit={createHabit} deleteHabit={deleteHabit}  manageStreak={manageStreak}/>
       </div>
 
     </div>
