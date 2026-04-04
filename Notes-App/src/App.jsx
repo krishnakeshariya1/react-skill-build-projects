@@ -1,7 +1,10 @@
+import { Navbar } from "./Components/Navbar"
+
 const App = () =>{
+  
   return(
     <div>
-      Hello sir krishna
+      <Navbar />
     </div>
   )
 }

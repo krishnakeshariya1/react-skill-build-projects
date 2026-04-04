@@ -1,1 +1,39 @@
 @import "tailwindcss";
+
+.theme-btn{
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 7px 14px 7px 10px;
+    border-radius: 100px;
+    background: rgb(28, 27, 27);
+    color: rgb(175, 175, 175);
+    border: none;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    transition: background 0.3s, color 0.3s, transform 0.15s;
+    white-space: nowrap;
+}
+
+
+  .toggle-track {
+    width: 34px;
+    height: 19px;
+    background: rgba(99, 99, 99, 0.859);
+    border-radius: 100px;
+    position: relative;
+    transition: background 0.3s;
+    flex-shrink: 0;
+  }
+  .toggle-thumb {
+    position: absolute;
+    top: 2.5px;
+    left: 2.5px;
+    width: 14px;
+    height: 14px;
+    background: burlywood;
+    border-radius: 50%;
+    transition: transform 0.3s ease, background 0.3s;
+  }
