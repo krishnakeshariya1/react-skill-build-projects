@@ -32,16 +32,17 @@ const App = () => {
 
     setNotes((prev) => [...prev, note]);
   }
-  const handleSubmit = (data) => {
-    createNote(data);
-    navigate("/");
-  };
+  function deleteNote(id){
+    if(!id)return;
+
+    setNotes((prev) => prev.filter((note) => note.id !== id));
+  }
 
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Dashboard notes={notes} />} />
-        <Route path="/Add" element={<AddNotesPage handleSubmit={handleSubmit} />} />
+        <Route path="/" element={<Dashboard notes={notes} deleteNote={deleteNote} />} />
+        <Route path="/Add" element={<AddNotesPage handleSubmit={createNote} />} />
       </Routes>
     </BrowserRouter>
   );
