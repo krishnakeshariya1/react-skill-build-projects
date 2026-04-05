@@ -37,3 +37,4 @@
     border-radius: 50%;
     transition: transform 0.3s ease, background 0.3s;
   }
+ html.dark .toggle-thumb { transform: translateX(15px); }
