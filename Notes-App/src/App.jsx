@@ -1,9 +1,4 @@
 import { useEffect, useState } from "react"
-import { AddNotes } from "./Components/AddNotes"
-import { AllNotesLayout } from "./Components/AllNotesLayout"
-import { Category } from "./Components/Category"
-import { Navbar } from "./Components/Navbar"
-import { NotesCard } from "./Components/NotesCard"
 import { Dashboard } from "./Pages/Dashboard"
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AddNotesPage } from "./Pages/AddNotesPage"
