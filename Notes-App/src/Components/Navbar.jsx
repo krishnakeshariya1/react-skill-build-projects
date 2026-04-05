@@ -1,6 +1,6 @@
 export const Navbar = () => {
     return (
-        <div className="px-6 py-4 bg-gray-200 flex items-center justify-between">
+        <nav className="px-6 py-4 bg-gray-200 flex items-center justify-between">
             <div className="flex gap-7 items-center">
                 <h1 className="border-gray-500 border-r-2 pr-3 font-bold text-xl">Notes App</h1>
                 <input type="text" placeholder="Search."
@@ -14,6 +14,6 @@ export const Navbar = () => {
                     <span id="themeLabel">Light Mode</span>
                 </button>
             </div>
-        </div>
+        </nav>
     )
 }

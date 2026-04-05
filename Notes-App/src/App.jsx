@@ -1,3 +1,4 @@
+import { Category } from "./Components/Category"
 import { Navbar } from "./Components/Navbar"
 
 const App = () =>{
@@ -5,6 +6,8 @@ const App = () =>{
   return(
     <div>
       <Navbar />
+      
+      < Category />
     </div>
   )
 }
