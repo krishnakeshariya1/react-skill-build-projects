@@ -32,16 +32,26 @@ const App = () => {
 
     setNotes((prev) => [...prev, note]);
   }
-  function deleteNote(id){
-    if(!id)return;
+  function deleteNote(id) {
+    if (!id) return;
 
     setNotes((prev) => prev.filter((note) => note.id !== id));
   }
 
+  function DoneNote(id) {
+    setNotes((prev) => prev.map((note) => {
+      if (note.id === id) {
+        return {
+          ...note,
+          isCompleted: !note.isCompleted,
+        }
+      }
+    }))
+  }
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Dashboard notes={notes} deleteNote={deleteNote} />} />
+        <Route path="/" element={<Dashboard notes={notes} deleteNote={deleteNote} DoneNote={DoneNote} />} />
         <Route path="/Add" element={<AddNotesPage handleSubmit={createNote} />} />
       </Routes>
     </BrowserRouter>

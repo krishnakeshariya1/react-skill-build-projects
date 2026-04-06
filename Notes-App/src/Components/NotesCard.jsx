@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-export const NotesCard = ({ notes, deleteNote }) => {
+export const NotesCard = ({ notes, deleteNote, DoneNote }) => {
     return (
         <div className="grid grid-cols-4 px-24 py-5 gap-10 ">
             < Link to="/Add">
@@ -21,7 +21,7 @@ export const NotesCard = ({ notes, deleteNote }) => {
             </Link>
             {notes.map((note,) => {
                 return (
-                    <div key={note.id} className=" h-56 bg-white shadow-lg rounded-2xl px-4 py-2 flex flex-col max-w-2xl">
+                    <div key={note.id} className={`${note.isCompleted ? "bg-green-500" : "bg-white"} h-56 shadow-lg rounded-2xl px-4 py-2 flex flex-col max-w-2xl`}>
                         <div className="flex justify-between items-center">
                             <h2 className="bg-sky-200 px-2 py-1 rounded-xl font-semibold">{note.category}</h2>
                             <p>{note.date}</p>
@@ -32,7 +32,8 @@ export const NotesCard = ({ notes, deleteNote }) => {
                         <div className="flex justify-between px-2 items-center mt-auto ">
                             < button className="bg-red-500 px-3 py-1 rounded-xl"
                               onClick={()=> deleteNote(note.id)}>Delete</button>
-                            <button className="bg-green-500 px-3 py-1 rounded-xl">Done</button>
+                            <button className="bg-green-500 px-3 py-1 rounded-xl"
+                             onClick={()=> DoneNote(note.id)}>{note.isCompleted ? "Undo" : "Done"}</button>
                         </div>
                     </div>
                 )
