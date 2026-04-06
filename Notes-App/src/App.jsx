@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Dashboard } from "./Pages/Dashboard";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AddNotesPage } from "./Pages/AddNotesPage";
+import { ThemeContext } from "./ContextAPI/ThemeContext";
 
 const App = () => {
 
@@ -13,6 +14,7 @@ const App = () => {
       return [];
     }
   });
+
   const [selectedCategory, setSelectedCategory] = useState("all");
 
   useEffect(() => {
@@ -33,6 +35,7 @@ const App = () => {
 
     setNotes((prev) => [...prev, note]);
   }
+
   function deleteNote(id) {
     if (!id) return;
 
@@ -49,10 +52,7 @@ const App = () => {
       }
     }))
   }
-  useEffect(()=>{
-    console.log(selectedCategory)
-  },[setSelectedCategory])
-
+  
   const filterNote =  selectedCategory.toLowerCase() === "all" ? notes : notes.filter((note)=> note.category.toLowerCase() === selectedCategory)
 
   return (

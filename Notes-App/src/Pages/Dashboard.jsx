@@ -1,10 +1,15 @@
+import { useContext } from "react"
 import { Category } from "../Components/Category"
 import { Navbar } from "../Components/Navbar"
 import { NotesCard } from "../Components/NotesCard"
+import { ThemeContext } from "../ContextAPI/ThemeContext"
 
 export const Dashboard = ({notes, deleteNote, DoneNote, filterNote}) => {
+
+    const {Theme} = useContext(ThemeContext);
+    
     return (
-        <div className="w-full min-h-screen  bg-gray-50">
+        <div className={`w-full min-h-screen ${Theme} bg-(--bg-body-Color)`}>
             < Navbar />
             < Category filterNote={filterNote}/>
             < NotesCard notes={notes} deleteNote={deleteNote} DoneNote={DoneNote}/>

@@ -6,14 +6,26 @@ html{
   box-sizing: border-box;
 }
 
+.light{
+  --primary-bg : white ;
+  --secondary-bg : #333;
+  --primary-text-Color : #000;
+  --seconday-Color : rgb(199, 199, 199);
+  --bg-body-Color : rgb(243, 243, 244);
+  --bg-Navbar :  rgb(209 213 219);
+  --border-Color : rgb(75 85 99);
+   
+}
+.dark {
+  --bg-body-Color : #111;
+}
+
 .theme-btn{
     display: flex;
     align-items: center;
     gap: 9px;
     padding: 7px 14px 7px 10px;
     border-radius: 100px;
-    background: rgb(28, 27, 27);
-    color: rgb(175, 175, 175);
     border: none;
     cursor: pointer;
     font-family: 'DM Sans', sans-serif;
@@ -43,4 +55,4 @@ html{
     border-radius: 50%;
     transition: transform 0.3s ease, background 0.3s;
   }
- html.dark .toggle-thumb { transform: translateX(15px); }
+ html .dark .toggle-thumb { transform: translateX(15px); }
