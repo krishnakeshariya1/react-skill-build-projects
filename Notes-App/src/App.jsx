@@ -14,8 +14,9 @@ const App = () => {
       return [];
     }
   });
+  const [filters, setFilter] = useState("all");
+  const [search, setSearch] = useState(null);
 
-  const [selectedCategory, setSelectedCategory] = useState("all");
 
   useEffect(() => {
     localStorage.setItem("notes", JSON.stringify(notes));
@@ -53,12 +54,23 @@ const App = () => {
     }))
   }
   
-  const filterNote =  selectedCategory.toLowerCase() === "all" ? notes : notes.filter((note)=> note.category.toLowerCase() === selectedCategory)
+  const filterNote = notes.filter((note) => {
+  const matchesSearch =
+    (note.title || "")
+      .toLowerCase()
+      .includes((search || "").toLowerCase());
+
+  const matchesCategory =
+    filters === "all" ||
+    (note.category && note.category === filters);
+
+  return matchesSearch && matchesCategory;
+});
 
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Dashboard notes={filterNote} deleteNote={deleteNote} DoneNote={DoneNote} filterNote={setSelectedCategory} />} />
+        <Route path="/" element={<Dashboard notes={filterNote} deleteNote={deleteNote} DoneNote={DoneNote} filterNote={setFilter} setSearch={setSearch} />} />
         <Route path="/Add" element={<AddNotesPage handleSubmit={createNote} />} />
       </Routes>
     </BrowserRouter>

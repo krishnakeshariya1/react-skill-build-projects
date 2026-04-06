@@ -1,13 +1,14 @@
 import { useContext } from "react"
 import { ThemeContext } from "../ContextAPI/ThemeContext"
 
-export const Navbar = () => {
+export const Navbar = ({setSearch}) => {
     const {Theme, toggleTheme} = useContext(ThemeContext)
     return (
         <nav className={`px-6 py-4 flex items-center justify-between w-full ${Theme} bg-(--bg-Navbar)`}>
             <div className="flex gap-7 items-center">
                 <h1 className={` border-(--border-Color) text-(--primary-text-Color) border-r-2 pr-3 font-bold text-xl ${Theme} `}>Notes App</h1>
                 <input type="text" placeholder="Search."
+                 onChange={(e)=> setSearch(e.target.value)}
                     className={`${Theme} bg-(--primary-bg) rounded-xl px-4 py-1 w-xl shadow-lg`} />
             </div>
             <div>
