@@ -13,6 +13,7 @@ const App = () => {
       return [];
     }
   });
+  const [selectedCategory, setSelectedCategory] = useState("all");
 
   useEffect(() => {
     localStorage.setItem("notes", JSON.stringify(notes));
@@ -48,10 +49,16 @@ const App = () => {
       }
     }))
   }
+  useEffect(()=>{
+    console.log(selectedCategory)
+  },[setSelectedCategory])
+
+  const filterNote =  selectedCategory.toLowerCase() === "all" ? notes : notes.filter((note)=> note.category.toLowerCase() === selectedCategory)
+
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Dashboard notes={notes} deleteNote={deleteNote} DoneNote={DoneNote} />} />
+        <Route path="/" element={<Dashboard notes={filterNote} deleteNote={deleteNote} DoneNote={DoneNote} filterNote={setSelectedCategory} />} />
         <Route path="/Add" element={<AddNotesPage handleSubmit={createNote} />} />
       </Routes>
     </BrowserRouter>
