@@ -1,4 +1,4 @@
-const Repo = () =>{
+export const Repo = () =>{
     return(
         <div>
             repo page
