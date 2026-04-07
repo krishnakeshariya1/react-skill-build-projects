@@ -1,7 +1,9 @@
+import { Overview } from "./Pages/Overview"
+
 const App = () => {
   return(
     <div>
-      <h1>find </h1>
+      < Overview />
     </div>
   )
 }
