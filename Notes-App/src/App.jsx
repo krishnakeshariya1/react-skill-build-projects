@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useMemo, useEffect, useState } from "react";
 import { Dashboard } from "./Pages/Dashboard";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AddNotesPage } from "./Pages/AddNotesPage";
@@ -7,15 +7,11 @@ import { ThemeContext } from "./ContextAPI/ThemeContext";
 const App = () => {
 
   const [notes, setNotes] = useState(() => {
-    try {
-      const data = localStorage.getItem("notes");
-      return data ? JSON.parse(data) : [];
-    } catch {
-      return [];
-    }
+   const data = localStorage.getItem("notes")
+   return data ? JSON.parse(data) : []
   });
   const [filters, setFilter] = useState("all");
-  const [search, setSearch] = useState(null);
+  const [search, setSearch] = useState("");
 
 
   useEffect(() => {
@@ -54,18 +50,15 @@ const App = () => {
     }))
   }
   
-  const filterNote = notes.filter((note) => {
-  const matchesSearch =
-    (note.title || "")
-      .toLowerCase()
-      .includes((search || "").toLowerCase());
+  
+  const filterNote = useMemo(() => {
+    return notes
+      .filter((n) => (filters === "all" ? true : n.category.toLowerCase() === filters.toLowerCase()))
+      .filter((n) =>
+        n.title.toLowerCase().includes(search.toLowerCase())
+      );
+  }, [notes, filters, search]);
 
-  const matchesCategory =
-    filters === "all" ||
-    (note.category && note.category === filters);
-
-  return matchesSearch && matchesCategory;
-});
 
   return (
     <BrowserRouter>

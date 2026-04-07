@@ -8,7 +8,7 @@ export const Navbar = ({setSearch}) => {
             <div className="flex gap-7 items-center">
                 <h1 className={` border-(--border-Color) text-(--primary-text-Color) border-r-2 pr-3 font-bold text-xl ${Theme} `}>Notes App</h1>
                 <input type="text" placeholder="Search."
-                 onChange={(e)=> setSearch(e.target.value)}
+                 onChange={(e)=> setSearch(e.target.value.toLowerCase())}
                     className={`${Theme} bg-(--primary-bg) rounded-xl px-4 py-1 w-xl shadow-lg`} />
             </div>
             <div>
